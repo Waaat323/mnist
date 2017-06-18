@@ -62,6 +62,7 @@ if __name__ == '__main__':
     num_epochs = 10
     batch_size = 500
     learning_rate = 0.001       
+
         
     # データ読み込み
     train, test = load_mnist_as_ndarray()
