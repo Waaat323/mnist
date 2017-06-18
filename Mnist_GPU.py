@@ -19,11 +19,15 @@ from chainer import optimizers
 from chainer.datasets import get_mnist
 from chainer.dataset import concat_examples
 
+
+
 ###
 parser = argparse.ArgumentParser(description='Chainer example: MNIST')
 parser.add_argument('--gpu', '-g', default=0, type=int,
                     help='GPU ID (negative value indicates CPU)')
 args = parser.parse_args()
+
+
 if args.gpu >= 0:
     cuda.check_cuda_available()
 xp = cuda.cupy if args.gpu >= 0 else np
@@ -54,6 +58,7 @@ class ConvNet(chainer.Chain):
         return y
     
 if __name__ == '__main__':
+    gpu = -1
     num_epochs = 10
     batch_size = 500
     learning_rate = 0.001       
