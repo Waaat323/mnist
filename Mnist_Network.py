@@ -94,8 +94,8 @@ if __name__ == '__main__':
             epoch_losses.append(loss.data)
             epoch_accs.append(accuracy.data)
 
-        epoch_loss = np.mean(cuda.to_cpu(xp.array(epoch_losses)))
-        epoch_acc = np.mean(cuda.to_cpu(xp.array(epoch_accs)))
+        epoch_loss = np.mean(cuda.to_cpu(xp.stack(epoch_losses)))
+        epoch_acc = np.mean(cuda.to_cpu(xp.stack(epoch_accs)))
         train_loss_log.append(epoch_loss)
         train_acc_log.append(epoch_acc)
 
@@ -115,8 +115,8 @@ if __name__ == '__main__':
 
             losses.append(loss.data)
             accs.append(accuracy.data)
-        test_loss = np.mean(cuda.to_cpu(xp.array(losses)))
-        test_acc = np.mean(cuda.to_cpu(xp.array(accs)))
+        test_loss = np.mean(cuda.to_cpu(xp.stack(losses)))
+        test_acc = np.mean(cuda.to_cpu(xp.stack(accs)))
         test_loss_log.append(test_loss)
         test_acc_log.append(test_acc)
 
